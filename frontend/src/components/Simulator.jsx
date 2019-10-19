@@ -39,6 +39,7 @@ export const Simulator = () => {
             });
 
             socket.on('connect', () => {
+                console.log('connect')
                 amendOutput('Simulator connected');
                 graphicSimulator = new GraphicSimulator(canvasRef);
             });
@@ -47,8 +48,8 @@ export const Simulator = () => {
                 amendOutput('Simulator disconnected');
             });
 
-            socket.on('message', (_data) => {
-                const data = JSON.parse(_data);
+            socket.on('message', (data) => {
+                console.log(data);
                 amendOutput(`Message received: ${JSON.stringify(data)}`);
             });
 
@@ -58,7 +59,7 @@ export const Simulator = () => {
             }
 
             if (window.DeviceOrientationEvent) {
-                window.addEventListener('deviceorientation', deviceOrientationHandler, false);
+                //window.addEventListener('deviceorientation', deviceOrientationHandler, false);
             }
         }        
     }, [consoleRef, amendOutput]);

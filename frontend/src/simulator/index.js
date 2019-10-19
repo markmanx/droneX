@@ -141,7 +141,7 @@ export class GraphicSimulator {
   onTick() {
     requestAnimationFrame(this.onTick.bind(this));
     // this.camera.lookAt(0, 0, 0);
-    console.log(this.controls)
+    // console.log(this.controls)
     // if (this.controlState.up) {
     //     this.drone.position.setY(this.drone.position.y + 0.02);
     // }
