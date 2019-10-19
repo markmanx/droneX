@@ -8,10 +8,6 @@ files:
   - source: droneX.nginx.conf
     destination: /etc/nginx/sites-enabled
 hooks:
-  BeforeInstall:
-    - location: beforeInstall.sh
-      timeout: 300
-      runas: root
   AfterInstall:
     - location: afterInstall.sh
       timeout: 300
