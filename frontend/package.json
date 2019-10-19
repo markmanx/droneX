@@ -4,15 +4,19 @@
   "private": true,
   "scripts": {
     "start": "react-scripts start",
+    "build": "react-scripts build",
+    "start:prod": "react-scripts build && pm2 start npm serve -l 3000 ./build",
     "deploy": "react-scripts build && cd build && bestzip ../frontend.zip *",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
   "dependencies": {
     "@material-ui/core": "^4.5.1",
+    "pm2": "^4.1.2",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
     "react-scripts": "3.2.0",
+    "serve": "^11.2.0",
     "socket.io-client": "^2.3.0",
     "styled-components": "^4.4.0"
   },
