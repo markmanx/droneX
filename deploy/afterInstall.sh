@@ -1,5 +1,6 @@
 source ~/.bash_profile
 
+PATH=$PATH:$HOME/.local/bin:$HOME/bin
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
