@@ -3,7 +3,9 @@
   "version": "0.0.0",
   "description": "The API for DroneX's 2019 NASA hackathon entry",
   "main": "server.js",
-  "scripts": {},
+  "scripts": {
+    "start": "node src/server.js"
+  },
   "author": "Mark Mankarious",
   "license": "UNLICENCED",
   "dependencies": {
