@@ -29,6 +29,88 @@
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
+      		<script src="../src/simulator/three.js"></script>
+        <script src="../src/simulator/GLTFLoader.js"></script>
+        <script src="../src/simulator/FirstPersonControls.js"></script>
+		<script>
+
+var scene, camera, renderer,controls;
+function init() {
+    scene  = new THREE.Scene();
+    camera = new THREE.PerspectiveCamera( 55, window.innerWidth / window.innerHeight, 1, 1000 );
+ renderer = new THREE.WebGLRenderer();
+    	renderer.setSize(1920,1080);
+
+
+renderer.setSize( window.innerWidth, window.innerHeight );
+document.body.appendChild( renderer.domElement );
+
+    controls = new THREE.FirstPersonControls(camera);
+  controls.rotateSpeed = 1.0;
+controls.zoomSpeed = 1.2;
+controls.panSpeed = 0.8;
+controls.noZoom = false;
+controls.noPan = false;
+controls.staticMoving = true;
+controls.dynamicDampingFactor = 0.3;
+
+let directionalLight1 = new THREE.DirectionalLight( 0xC0C090 );
+let directionalLight2 = new THREE.DirectionalLight( 0xC0C090 );
+directionalLight1.position.set( - 100, 50, 100 );
+directionalLight2.position.set( 100, 50, - 100 );
+    directionalLight1.intensity=10;
+scene.add( directionalLight1 );
+scene.add( directionalLight2 );
+            camera.position.set(2, 5, 8);
+
+    loadModel();
+    onTick();
+
+}
+
+function loadModel() {
+ var loader = new THREE.GLTFLoader();
+    loader.load(
+	// resource URL
+	'scene.glb',
+	// called when the resource is loaded
+	function ( gltf ) {
+
+		scene.add( gltf.scene );
+
+		gltf.animations; // Array<THREE.AnimationClip>
+		gltf.scene; // THREE.Scene
+		gltf.scenes; // Array<THREE.Scene>
+		gltf.cameras; // Array<THREE.Camera>
+		gltf.asset; // Object
+
+	},
+	// called while loading is progressing
+	function ( xhr ) {
+
+		console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
+
+	},
+	// called when loading has errors
+	function ( error ) {
+
+		console.log( 'An error happened' );
+
+	}
+);
+}
+
+
+function onTick() {
+    requestAnimationFrame(onTick);
+    camera.lookAt(0,0,0);
+    renderer.render(scene, camera);
+}
+
+     init();
+
+		</script>
+
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
