@@ -1,8 +1,7 @@
 source ~/.bash_profile
 
-PATH=$PATH:$HOME/.local/bin:$HOME/bin
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+echo $PATH
+echo $(node -v)
 
 cd /home/ec2-user/droneX/api
 extract-zip api.zip .
