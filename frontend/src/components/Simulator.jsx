@@ -49,7 +49,6 @@ export const Simulator = () => {
             });
 
             socket.on('message', (data) => {
-                console.log(data);
                 const {x, y, z} = data;
                 graphicSimulator.onRotate(x, y, z);
                 amendOutput(`Message received: ${JSON.stringify(data)}`);

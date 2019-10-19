@@ -48,6 +48,7 @@ export class GraphicSimulator {
     this.scene.add( ground );
 
     this.drone = this.createDrone();
+    this.drone.rotation.set(0, 0, 0);
     this.scene.add( this.drone );
 
     this.onTick();
@@ -63,12 +64,16 @@ export class GraphicSimulator {
   }
 
   createDrone() {
-    const geometry = new THREE.BoxGeometry( 5, 2, 5 );
-    const material = new THREE.MeshBasicMaterial( {color: 0x000000} );
-    const cube = new THREE.Mesh( geometry, material );
-    cube.position.set(0, 2, 0)
+      const geometry = new THREE.ConeGeometry( 1, 7, 32 );
+      const material = new THREE.MeshBasicMaterial( {color: 0x000000} );
+      const cone = new THREE.Mesh( geometry, material );
+      cone.rotation.x = 90;
 
-    return cube;
+      const group = new THREE.Object3D();
+      group.add(cone);
+      group.position.set(0, 2, 0);
+
+    return group;
   }
 
   onRotate(alpha, beta, gamma) {
@@ -140,6 +145,12 @@ export class GraphicSimulator {
 
   onTick() {
     requestAnimationFrame(this.onTick.bind(this));
+
+    const { x: rotX, y: rotY, z: rotZ } = this.drone.rotation;
+    const { x: posX, y: posY, z: posZ } = this.drone.position;
+    this.drone.position.setX(posX + rotX * -0.001);
+    this.drone.position.setZ(posZ + 0.2);
+    
     // this.camera.lookAt(0, 0, 0);
     // console.log(this.controls)
     // if (this.controlState.up) {
