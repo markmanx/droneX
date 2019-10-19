@@ -66,11 +66,14 @@ export class GraphicSimulator {
     const geometry = new THREE.BoxGeometry( 5, 2, 5 );
     const material = new THREE.MeshBasicMaterial( {color: 0x000000} );
     const cube = new THREE.Mesh( geometry, material );
-    cube.position.set(0, 0, 0)
+    cube.position.set(0, 2, 0)
 
     return cube;
   }
 
+  onRotate(alpha, beta, gamma) {
+      this.drone.rotation.set(alpha, beta, gamma);
+  }
 //   async load() {
 //     const { model, texture } = SRC_URLS.live;
 //     const mesh = await this.loadModel(model);
@@ -139,9 +142,9 @@ export class GraphicSimulator {
     requestAnimationFrame(this.onTick.bind(this));
     // this.camera.lookAt(0, 0, 0);
     console.log(this.controls)
-    if (this.controlState.up) {
-        this.drone.position.setY(this.drone.position.y + 0.02);
-    }
+    // if (this.controlState.up) {
+    //     this.drone.position.setY(this.drone.position.y + 0.02);
+    // }
 
     this.controls.update();
     this.renderer.render(this.scene, this.camera);

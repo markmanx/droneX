@@ -51,10 +51,16 @@ export const Simulator = () => {
                 const data = JSON.parse(_data);
                 amendOutput(`Message received: ${JSON.stringify(data)}`);
             });
-        }
 
-        
+            const deviceOrientationHandler = (data) => {
+                const {alpha, beta, gamma} = data;
+                graphicSimulator.onRotate(alpha, beta, gamma);
+            }
 
+            if (window.DeviceOrientationEvent) {
+                window.addEventListener('deviceorientation', deviceOrientationHandler, false);
+            }
+        }        
     }, [consoleRef, amendOutput]);
 
     return (
