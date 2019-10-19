@@ -1,4 +1,4 @@
-sudo su
+source ~/.bash_profile
 
 cd /home/ec2-user/droneX/api
 extract-zip api.zip .
