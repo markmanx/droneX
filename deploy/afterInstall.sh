@@ -1,3 +1,5 @@
+sudo su
+
 cd /home/ec2-user/droneX/api
 extract-zip api.zip .
 npm run start
