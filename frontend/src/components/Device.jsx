@@ -7,8 +7,8 @@ import { WS_ENDPOINT } from '../baseConfig';
 
 const Wrapper = styled.div`
     position: relative;
-    width: 400px;
-    height: 400px;
+    width: 100%;
+    height: 100%;
     background-color: black;
     color: white;
 `

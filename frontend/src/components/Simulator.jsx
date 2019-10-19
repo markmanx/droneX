@@ -6,9 +6,9 @@ import { GraphicSimulator } from '../simulator/index';
 import { WS_ENDPOINT } from '../baseConfig';
 
 const Wrapper = styled.div`
-    position: relative;
-    width: 400px;
-    height: 400px;
+    position: absolute;
+    width: 100%;
+    height: 100%;
     background-color: black;
     color: white;
     overflow: hidden;
