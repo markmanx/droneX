@@ -44,11 +44,23 @@ export class GraphicSimulator {
     const ground = this.createGround();
     this.scene.add( ground );
 
+    const drone = this.createDrone();
+    this.scene.add( drone );
+
     this.onTick();
   }
 
   createGround() {
-    const geometry = new THREE.BoxGeometry( 2, 2, 2 );
+    const geometry = new THREE.BoxGeometry( 50, 0.1, 50 );
+    const material = new THREE.MeshBasicMaterial( {color: 0x7CFC00} );
+    const cube = new THREE.Mesh( geometry, material );
+    cube.position.set(0, 0, 0)
+
+    return cube;
+  }
+
+  createDrone() {
+    const geometry = new THREE.BoxGeometry( 5, 2, 5 );
     const material = new THREE.MeshBasicMaterial( {color: 0x000000} );
     const cube = new THREE.Mesh( geometry, material );
     cube.position.set(0, 0, 0)
