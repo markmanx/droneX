@@ -4,11 +4,18 @@
   "description": "The API for DroneX's 2019 NASA hackathon entry",
   "main": "server.js",
   "scripts": {
-    "start": "node src/server.js"
+    "dev": "nodemon src/server.js",
+    "start": "pm2 start src/server.js",
+    "deploy": "bestzip api.zip ./"
   },
   "author": "Mark Mankarious",
   "license": "UNLICENCED",
   "dependencies": {
+    "pm2": "^4.1.2",
     "socket.io": "^2.3.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.4",
+    "bestzip": "^2.1.5"
   }
 }
