@@ -5,5 +5,3 @@ unzip api.zip
 
 cd /home/ec2-user/droneX/frontend
 unzip frontend.zip
-
-sudo service nginx restart
