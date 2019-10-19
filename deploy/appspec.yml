@@ -1,0 +1,18 @@
+version: 0.0
+os: linux
+files:
+  - source: api.zip
+    destination: /home/ec2-user/droneX/api
+  - source: frontend.zip
+    destination: /home/ec2-user/droneX/frontend
+  - source: droneX.nginx.conf
+    destination: /etc/nginx/sites-enabled
+hooks:
+  BeforeInstall:
+    - location: beforeInstall.sh
+      timeout: 300
+      runas: root
+  AfterInstall:
+    - location: afterInstall.sh
+      timeout: 300
+      runas: root

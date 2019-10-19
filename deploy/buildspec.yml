@@ -4,17 +4,16 @@ phases:
   install:
     runtime-versions:
       nodejs: 10
-  pre_build:
-    commands:
-      - $(aws ecr get-login --no-include-email --region $AWS_DEFAULT_REGION)
   build:
     commands:
-      - cd frontend && npm run build
+      - cd frontend && npm run deploy && cd ..
+      - cd api && npm run deploy
 artifacts:
   files:
+    - api/api.zip
+    - frontend/frontend.zip
     - deploy/appspec.yml
+    - deploy/beforeInstall.sh
     - deploy/afterInstall.sh
-    - api
-    - deploy/build
     - deploy/droneX.nginx.conf
-  discard-paths: no
+  discard-paths: yes
