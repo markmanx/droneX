@@ -1,1 +1,1 @@
-export const WS_ENDPOINT = 'http://localhost:3000';
+export const WS_ENDPOINT = 'http://localhost:4000';
