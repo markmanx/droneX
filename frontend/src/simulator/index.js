@@ -19,7 +19,10 @@ OBJLoader(THREE);
 // };
 
 export class GraphicSimulator {
-    
+    controlState = {
+        up: true
+    }
+
   constructor(canvasRef) {
     this.scene = new THREE.Scene();
 
@@ -44,8 +47,8 @@ export class GraphicSimulator {
     const ground = this.createGround();
     this.scene.add( ground );
 
-    const drone = this.createDrone();
-    this.scene.add( drone );
+    this.drone = this.createDrone();
+    this.scene.add( this.drone );
 
     this.onTick();
   }
@@ -135,6 +138,11 @@ export class GraphicSimulator {
   onTick() {
     requestAnimationFrame(this.onTick.bind(this));
     // this.camera.lookAt(0, 0, 0);
+    console.log(this.controls)
+    if (this.controlState.up) {
+        this.drone.position.setY(this.drone.position.y + 0.02);
+    }
+
     this.controls.update();
     this.renderer.render(this.scene, this.camera);
   }
