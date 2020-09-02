@@ -16,6 +16,6 @@
   },
   "devDependencies": {
     "nodemon": "^1.19.4",
-    "bestzip": "^2.1.5"
+    "bestzip": "^2.1.7"
   }
 }
